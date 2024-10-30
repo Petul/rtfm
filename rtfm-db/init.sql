@@ -1,5 +1,6 @@
-CREATE TABLE manuals (
+CREATE TABLE pages (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255) NOT NULL UNIQUE,
+	section VARCHAR(50),
 	description TEXT
 ) 

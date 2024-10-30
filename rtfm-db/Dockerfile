@@ -2,7 +2,7 @@
 FROM postgres:latest
 
 # Environment variables for the default database and user
-ENV POSTGRES_DB=tododb
+ENV POSTGRES_DB=rtfmdb
 ENV POSTGRES_USER=youruser
 ENV POSTGRES_PASSWORD=yourpassword
 
