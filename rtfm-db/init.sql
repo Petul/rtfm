@@ -4,3 +4,5 @@ CREATE TABLE pages (
 	section VARCHAR(50),
 	description TEXT
 ) 
+
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
