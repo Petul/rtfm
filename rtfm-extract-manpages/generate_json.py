@@ -1,15 +1,18 @@
+#!/usr/bin/env python3
+
 import subprocess
 import json
+import sys
 
 def parse_line_info(line, db):
     try:
         line = line.split()
         page = line[0]
         section = line[1].strip("()")
-        description = " ".join(line[3:-1])
+        description = " ".join(line[3:])
         db[page] = {"section": section, "description": description}
     except:
-        print(f"Failed to parse line {line}")
+        sys.stderr.write(f"Failed to parse line: {line}")
 
 
 if __name__ == '__main__':
@@ -18,5 +21,4 @@ if __name__ == '__main__':
     for l in out.stdout.split('\n'):
         parse_line_info(l, db)
     obj = json.dumps(db)
-    with open("db.json", "w") as outfile:
-        outfile.write(obj)
+    print(obj)
