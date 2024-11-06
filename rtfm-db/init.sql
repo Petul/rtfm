@@ -3,6 +3,6 @@ CREATE TABLE pages (
 	name VARCHAR(255) NOT NULL UNIQUE,
 	section VARCHAR(50),
 	description TEXT
-) 
+);
 
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
