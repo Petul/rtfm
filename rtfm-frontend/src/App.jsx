@@ -32,7 +32,10 @@ function App() {
         <ul>
           {
             searchResults.map((res) => (
-              <li>{res.name}: {res.section}</li>
+              <article>
+                <h3>{res.name} ({res.section})</h3>
+                <p className="text">{res.description}</p>
+              </article>
             ))
           }
         </ul>
