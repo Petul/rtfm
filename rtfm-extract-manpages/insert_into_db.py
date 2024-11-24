@@ -4,11 +4,11 @@ import json
 
 def insert_to_db(data, cursor):
     for key in data:
-        q = "INSERT INTO pages (name, section, description) VALUES (%s, %s, %s)"
-        cursor.execute(q, (key, data[key]["section"], data[key]["description"]))
+        q = "INSERT INTO pages (name, section, description, html_content) VALUES (%s, %s, %s, %s)"
+        cursor.execute(q, (key, data[key]["section"], data[key]["description"], data[key]["html_content"]))
 
 if __name__ == '__main__':
-    f = open("db.json")
+    f = open("db2.json")
     data = json.load(f)
     conn = psycopg2.connect(
         dbname='rtfmdb',
