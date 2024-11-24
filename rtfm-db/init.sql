@@ -2,7 +2,8 @@ CREATE TABLE pages (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255) NOT NULL UNIQUE,
 	section VARCHAR(50),
-	description TEXT
+	description TEXT,
+	html_content TEXT
 );
 
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
