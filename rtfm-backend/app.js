@@ -15,20 +15,17 @@ const pool = new Pool({
 app.use(express.json())
 
 app.get('/pages', async (req, res) => {
+  const section = req.query.section;
+  const page = req.query.page;
   try {
-    let limit;
-    let offset;
-    (req.query.limit !== undefined ? limit = req.query.limit : limit = null);
-    (req.query.offset !== undefined ? offset = req.query.offset : offset = 0);
-
-    const result = await pool.query('SELECT id, name, description FROM pages ORDER BY id ASC LIMIT $1 OFFSET $2', [limit, offset])
+    const result = await pool.query('SELECT id, name, description, html_content FROM pages WHERE section=$1 AND name=$2 LIMIT 1', [section, page]);
     res.json(result.rows)
   }
   catch (err) {
     console.log(err)
     res.status(200)
   }
-})
+});
 
 app.get('/search', async (req, res) => {
   const query = req.query.q;

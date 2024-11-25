@@ -1,46 +1,15 @@
-import { useState, useEffect } from 'react'
+import SearchPage from "./SearchPage"
+import ManualPage from "./ManualPage"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [searchString, setSearchString] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-
-  useEffect(() => {
-    const fetchResults = async () => {
-      try {
-        const response = await fetch(`/search/?q=${encodeURIComponent(searchString)}`);
-        const result = await response.json();
-        setSearchResults(result.rows);
-      }
-      catch (err) {
-        console.log(`Error: ${err}`);
-      }
-    }
-    fetchResults();
-  }, [searchString])
-
   return (
-    <main className="container-fluid">
-      <div className="search-box">
-      <form role="search">
-        <input name="search" type="search" placeholder="Search" 
-          onChange={event => {
-              setSearchString(event.target.value)
-            }}/>
-      </form>
-      </div>
-      <div clsasName="search-results">
-        <ul>
-          {
-            searchResults.map((res) => (
-              <article>
-                <h3>{res.name} ({res.section})</h3>
-                <p className="text">{res.description}</p>
-              </article>
-            ))
-          }
-        </ul>
-      </div>
-    </main>
+  <Router>
+      <Routes>
+        <Route path="/" element={<SearchPage />} />
+        <Route path="/man/:section/:name" element={<ManualPage />} />
+      </Routes>
+  </Router>
   )
 }
 

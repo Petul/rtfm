@@ -14,3 +14,10 @@
     text-transform: capitalize;
 }
 
+.man-content {
+    padding: 5rem;
+}
+
+#back-link {
+    padding: 1rem;
+}
